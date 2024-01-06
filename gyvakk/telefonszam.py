@@ -112,9 +112,9 @@ while True:
                 print(f"{phones.number}: {phones.getService()}")
                 SessionData.append(phones)
         else:
-            print("Nem megfelelő érték! (txt > random <valid> <invalid>)")
-    elif userInput.lower() == "txt":
-        userInput = input("txt > ")
+            print("Nem megfelelő érték! (random <valid> <invalid>)")
+    elif userInput.lower() == "file":
+        userInput = input("file > ")
         try:
             with open(userInput) as data:
                 for phones in data:
@@ -123,7 +123,7 @@ while True:
                     print(f"{num.number}: {num.getService()}")
                     SessionData.append(num)
         except FileNotFoundError:
-            print("File nem található")
+            print(f"{userInput} fájl nem található")
     elif userInput.lower() == "input":
         data = input("Input > ")
         p = Phonenumber(data)
@@ -152,5 +152,7 @@ while True:
         with open("phonenumbers_export.txt", "x") as f:
             for phone in SessionData:
                 f.write(f"{phone.number},{phone.getService()}\n")
+    elif userInput.lower() == "help":
+        print("<file> A programot txt módba rakja. Ebben a módban lehet fájlt beolvasni! ")
     else:
-        print("Ismeretlen parancs!")
+        print("Ismeretlen parancs! Használd a 'help' parancsot a parancsok megtekintéséhez!")
