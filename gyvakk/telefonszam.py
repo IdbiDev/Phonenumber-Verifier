@@ -153,6 +153,6 @@ while True:
             for phone in SessionData:
                 f.write(f"{phone.number},{phone.getService()}\n")
     elif userInput.lower() == "help":
-        print("<file> A programot txt módba rakja. Ebben a módban lehet fájlt beolvasni! ")
+        print("<file> A programot txt módba rakja. Ebben a módban lehet fájlt beolvasni!\n<random> <valid> <invalid> Random szám generátor\n<input> Kézi beviteli mód\n<export> Eddig mentett adatok kiírása txt fileba\n<stats> Eddigi adatok táblázatban kiírása\n<clear> Törli a statisztika memóriát\n<exit> Kilép a programból!")
     else:
         print("Ismeretlen parancs! Használd a 'help' parancsot a parancsok megtekintéséhez!")
