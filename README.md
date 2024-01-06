@@ -11,20 +11,14 @@ A program indítása után egyből lehet parancsokat beírni neki.
 Kérem a parancsot > 
 ```
 > [!NOTE]
-> Ha nem emlékezik a parancsokra a **help** parancsal a program a konzolba is kiírja!
+> Ha nem emlékeszik a parancsokra, a **help** paranccsal a program a konzolba kiírja!
 
 | Parancs | Leírás |
 | --- | --- |
-| `txt` | A programot **txt** módba rakja. Ebben a módban hozzá lehet férni az fájl beolvasáshoz és a random generáláshoz! |
+| `file` | A programot **txt** módba rakja. Ebben a módban lehet fájlt beolvasni! |
+| `random <valid> <invalid>` | A program generál random telefonszámokat, a megadott paraméterek alapján! (Space elválasztás!) |
 | `input` | A programot **beviteli** módba rakja. Ide írhatja az ellenőrizni kívánt telefonszámot! |
+| `export` | Az eddigi tárolt telefonszámokat kiírja egy txt fileba (*phonenumbers_export.txt*) |
 | `stats` | Táblázatban kiírja a program az eddig tárolt telefonszámokat! |
 | `clear` | Törli a tárolt telefonszámokat! |
 | `exit` | Kilépés a programból! |
-### TXT Mód
-Ezek a parancsok **TXT módban** használhatóak!
-| Parancs | Paraméter | Leírás |
-| --- | --- | --- |
-| `random` | \<valid\> \<invalid\> | Generál egy TXT file-t amiben random telefonszámok vannak. Az első szám valid telefonszámok mennyiségét, a másik az invalid telefonszámok mennyiségét határozza meg! (Space elválasztás)
-
-> [!NOTE]
-> Ha **TXT** módban nem parancsot írunk akkor egy file-t fog keresni a bevitt értékre.
