@@ -1,7 +1,6 @@
 from Exepctions import *
 import re
 import random
-import sqlite3
 
 szolgaltatok = {"20": "Yettel", "30": "Telekom", "70": "Vodafone", "50": "Digi"}
 regex = re.compile(r"^[0-9]+$")
@@ -83,7 +82,7 @@ class Phonenumber:
             return "Invalid"
 
 
-# Dont mind me
+# Életem legértelmesebb functionja
 def replaceStrWithNumber(string, number: str):
     ret = list(string)
     for k, v in enumerate(ret):
@@ -97,14 +96,16 @@ def replaceStrWithNumber(string, number: str):
 SessionData = []
 data = None
 while True:
-    userInput = input("Hogy szeretnéd használni? (TXT,Database,Input)")
+    userInput = input("Kérem a parancsot > ")
     if userInput.lower() == "txt":
-        userInput = input("Random, vagy létező file? (random,*file*)")
+        userInput = input("txt > ")
         if userInput.lower() == "random":
             data = PhonenumberGenerator(invalid=10, valid=50)
             for phones in data.uwu:
                 print(f"{phones.number}: {phones.getService()}")
                 SessionData.append(phones)
+        elif userInput.lower() == "back":
+            continue
         else:
             try:
                 data = open(userInput)
@@ -120,7 +121,7 @@ while True:
         print(f"{p.number}: {p.classifyNumber()}")
 
     elif userInput.lower() == "exit":
-        exit("Program bezárva")
+        exit("Program bezárva!")
     elif userInput.lower() == "stats":
 
         countedElements = {"Yettel": 0, "Telekom": 0, "Vodafone": 0, "Digi": 0, "Invalid": 0}
@@ -129,9 +130,14 @@ while True:
             countedElements[phone.getService()] += 1
         print(
             f"\nÖsszegzés:\n| Yettel | Telekom | Vodafone | Digi | Ismeretlen |\n| {replaceStrWithNumber('Yettel', str(countedElements['Yettel']))} | {replaceStrWithNumber('Telekom', str(countedElements['Telekom']))} | {replaceStrWithNumber('Vodafone', str(countedElements['Vodafone']))} | {replaceStrWithNumber('Digi', str(countedElements['Digi']))} | {replaceStrWithNumber('Ismeretlen', str(countedElements['Invalid']))} |")
-        print(f"Összesen {countedElements['Yettel']+countedElements['Telekom']+countedElements['Vodafone']+countedElements['Digi']} db valós telefonszám van, {countedElements['Invalid']} db hibás!")
+        print(
+            f"Összesen {countedElements['Yettel'] + countedElements['Telekom'] + countedElements['Vodafone'] + countedElements['Digi']} db valós telefonszám van, {countedElements['Invalid']} db hibás!")
     elif userInput.lower() == "clear":
         SessionData.clear()
-        print("Statisztika memória törölve!")
+        print("Statisztikai memória törölve!")
+    elif userInput.lower() == "export":
+        with open("phonenumbers_export.txt", "x+") as f:
+            for phone in SessionData:
+                f.write(f"{phone.number},{phone.getService()}\n")
     else:
         print("Ismeretlen parancs")
